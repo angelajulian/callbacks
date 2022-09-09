@@ -31,9 +31,40 @@ console.log(
 // [ 'art', 'app', 'buttery' ]
 *******************************************************************************/
 
-let xorSelect = function() {
-
+let xorSelect = function(arr, cb1, cb2) {
+  let newArr = []
+  for (item in arr) {
+    if (!(cb1(arr[item]) && cb2(arr[item])) && (cb1(arr[item]) || cb2(arr[item]))) {
+      newArr.push(arr[item])
+    }
+  }
+  return newArr
 };
+
+let isEven = function(n) {
+  return n % 2 === 0;
+};
+
+let isPositive = function(n) {
+  return n > 0;
+};
+
+console.log(xorSelect([-2, -1, 1, 2, 3, 4], isEven, isPositive));
+// [ -2, 1, 3 ]
+
+
+let longString = function(s) {
+  return s.length > 4;
+};
+
+let startsA = function(s) {
+  return s[0] === "a";
+};
+
+console.log(
+  xorSelect(["art", "academy", "app", "cat", "buttery"], longString, startsA)
+);
+// [ 'art', 'app', 'buttery' ]
 
 
 
