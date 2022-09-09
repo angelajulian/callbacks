@@ -26,7 +26,7 @@ let firstIndex = function (arr, cb) {
     for (item in arr) {
         if (cb(arr[item])) return item;
     }
-    return -1
+    return -1; 
 };
 
 let result1 = firstIndex([3, 7, 8, 10], function (n) {
